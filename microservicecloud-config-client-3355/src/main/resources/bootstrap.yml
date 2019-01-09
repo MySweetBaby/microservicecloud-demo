@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: micorservicecloud-client-config #远程的配置文件名
+      label: master #分支
+      uri: http://localhost:3344/ #config服务端地址（即链接远程配置的服务地址）
+      profile: test #需要读取的配置项

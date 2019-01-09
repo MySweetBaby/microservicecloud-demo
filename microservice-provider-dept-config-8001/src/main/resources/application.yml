@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: micorservicecloud-dept-config-8001

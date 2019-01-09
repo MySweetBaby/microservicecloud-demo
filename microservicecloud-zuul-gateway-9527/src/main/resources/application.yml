@@ -1,0 +1,30 @@
+server:
+  port: 9527
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: microservicecloud-zuul
+    prefer-ip-address: true
+spring:
+  application:
+    name: microservicecloud-zuul-gateway
+#  profiles: zuul-dept
+#  profiles:
+#    active:
+
+zuul:
+  routes:
+    feign:
+      serviceId: microservice-consumer-dept-feign #转发至feign微服务
+      path: /feign/**
+    dept:
+      serviceId: microservice-provider-dept #转发至服务提供者微服务
+      path: /mydept/**
+  ignored-services: "*" #禁止使用真实路径访问 禁用多个用 "*"
+  prefix: /staryea  #所有请求路径加上前缀
+#  sensitiveHeaders: "*" #过滤所有的head信息
+
+
+

@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: micorservicecloud-eureka-7001

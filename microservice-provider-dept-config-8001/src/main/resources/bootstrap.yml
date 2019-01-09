@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: micorservicecloud-dept-config-8001
+      label: master
+      profile: dept
+      uri: http://localhost:3344/

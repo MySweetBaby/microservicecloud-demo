@@ -1,0 +1,9 @@
+#系统级配置文件，当存在此配置文件时，优先加载此配置文件的配置
+spring:
+  cloud:
+    config:
+      name: micorservicecloud-eureka-7001
+      label: master
+      profile: dev
+      uri: http://localhost:3344/ #config服务端地址（即链接远程配置的服务地址）
+

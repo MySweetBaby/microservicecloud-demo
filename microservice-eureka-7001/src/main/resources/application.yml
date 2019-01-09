@@ -1,0 +1,22 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: microservice-eureka
+#    name: micorservicecloud-config
+#  profiles: eureka-7001
+
+eureka:
+  instance:
+    hostname: eureka7001.com
+  client:
+    register-with-eureka: false #设置为flase表示不向注册中心注册自己
+    fetch-registry: false #设置为flase表示当前是注册中心，不需要去检测服务
+    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/   #设置注册中心的地址 单机
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/   #设置注册中心的地址 集群 添加其他集群的地址
+
+
+
+
+
