@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Signin Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <!--使用th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}"
+    1、引用webjars下的样式或者js，会去当前类路径下寻找对应的样式或者js，既classpath:/META-INF/resource/webjars/ 去找
+    2、应用的自己定义的样式或者js，或者发送到后台的请求会自动加上项目名称（如果新增了项目名称或者是修改了项目名称）
+        不用修改项目名称
+    -->
+    <!--#用来取国际化的内容
+        当前版本的springboot版本不支持ResourceBundleMessageSource自动装配，目前无法加载国际化内容，可以使用1.5.19来实现
+        th:text="#{login.username}"
+        th:placeholder="#{login.rememner}"
+        th:text="#{login.password}"
+        th:placeholder="#{login.password}"
+        [[#{login.rememner}]] 行内表达是 直接在[[表达式]]
+    th:text="#{login.tip}"
+    -->
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet"/>
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet"/>
+</head>
+
+<body class="text-center">
+<form class="form-signin" action="dashboard.html" th:action="@{/user/login}" method="post">
+    <img class="mb-4" src="asserts/img/bootstrap-solid.svg" th:src="@{/image/test.jpg}" alt="" width="72" height="72"/>
+    <h1 class="h3 mb-3 font-weight-normal" >Please sign in</h1> <!--th:text="#{login.tip}"-->
+    <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+    <label class="sr-only" >Username</label>
+    <input type="text" name="username" class="form-control" placeholder="Username" required="" autofocus=""/>
+    <label class="sr-only" >Password</label>
+    <input type="password" name="password" class="form-control" placeholder="Password"  required=""/>
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me" /> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign in</button>
+    <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    <a class="btn btn-sm">中文</a>
+    <a class="btn btn-sm">English</a>
+</form>
+
+</body>
+
+</html>

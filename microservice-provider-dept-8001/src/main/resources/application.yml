@@ -16,19 +16,50 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=UTF-8&&serverTimezone=UTC
     username: root
     password: 123456
-    dbcp2:
-      max-idle: 10
-      min-idle: 5
-      max-wait-millis: 60000
-      initial-size: 5
+#    dbcp2:
+#      max-idle: 10
+#      min-idle: 5
+#      max-wait-millis: 60000
+#      initial-size: 5
+    type: com.alibaba.druid.pool.DruidDataSource # 指定使用druid数据源
+    initialSize: 5
+    minIdle: 5
+    maxIdle: 10
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  redis:
+    host: 192.168.0.100
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.0.160:9300
+      cluster-name: my-application
+    # 合并多个DruidDataSource的监控数据
+    #spring.datasource.useGlobalDataSourceStat=true
+
+
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/ #,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
   instance:
     instance-id: microservice-dept-8001 #自定义初始化实例的ID
     prefer-ip-address: true #访问路径可以显示IP
-
 
 
 
@@ -38,3 +69,15 @@ info: # 展示前台页面点击微服务名称需要显示的内容
   company.name: starya
   build.artifactId: $project.artifactId$
   bulid.verison: $project.verison$
+logging:
+  level:
+    com:
+      staryea: debug # 指定日志输出的级别 需要指定到路径
+  path: /dept/log # 如果不指定路径默认在当前路径下生成springboot.log文件
+  file: D:\dept.log # 如果指定文件名，可以在指定的位置生成指定文件名的日志文件 如果即写了file也写了path，则按照file来生成日志文件
+debug: true
+#  pattern:
+#    console: %d{yyyy-MM-dd}[%thread] %- 5level %logger - %msg%n #控制台打印格式
+#    file: %d{yyyy-MM-dd HH:mm:ss.SSS}[%thread] %- 5level %logger{50} - %msg%n #文件打印格式
+
+# 日志

@@ -86,6 +86,10 @@
 		<module>microservicecloud-zuul-gateway-9527</module>
 		<module>microservice-eureka-config-7001</module>
 		<module>microservice-provider-dept-config-8001</module>
+		<module>microservicecloud-config-3344</module>
+		<module>microservicecloud-config-client-3355</module>
+		<module>microservicecloud-web-7843</module>
+		<module>microservicecloud-message</module>
 	</modules>
 
 	<build>

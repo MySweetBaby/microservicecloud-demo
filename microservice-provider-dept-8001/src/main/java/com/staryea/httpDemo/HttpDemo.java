@@ -14,7 +14,7 @@ public class HttpDemo {
     public void sendGetRequest(String path,String param) throws Exception {
         URL url =new URL(path);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
+        connection.setRequestMethod("POST");
         connection.setDoOutput(true);
         connection.setDoInput(true);
         connection.setRequestProperty("accept","*/*");
@@ -41,7 +41,7 @@ public class HttpDemo {
         byte[] xmlData = new byte[1024];
         URL url1 = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
-        connection.setRequestMethod("GET");
+        connection.setRequestMethod("POST");
         connection.setDoInput(true);
         connection.setDoOutput(true);
         connection.setRequestProperty("accept", "*/*");
@@ -69,13 +69,17 @@ public class HttpDemo {
         System.out.println("-----------"+result);
         inputStream.close();
         connection.disconnect();
-
-
-
     }
 
     public static void main(String args[]) throws Exception {
-        HttpDemo httpDemo = new HttpDemo();
-        httpDemo.getResult("https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=18203611773");
+//        HttpDemo httpDemo = new HttpDemo();
+//        httpDemo.getResult("https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=18203611773");
+
+//        int x=0,y=1;
+//        if(++x==y-- & x++==1||--y==0)
+//            System.out.println("x="+x+",y="+y);
+//        else
+//            System.out.println("y="+y+",x="+x);
+//x = 2,y = 0;
     }
 }

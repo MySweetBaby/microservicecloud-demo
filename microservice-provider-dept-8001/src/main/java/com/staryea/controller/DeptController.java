@@ -3,6 +3,8 @@ package com.staryea.controller;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.staryea.entities.Dept;
 import com.staryea.service.IDeptService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -19,6 +21,9 @@ import java.util.List;
 @RequestMapping("/dept")
 public class DeptController {
 
+    //springboot默认的日志级别是info
+    private Logger log = LoggerFactory.getLogger(DeptController.class);
+
     @Autowired
     IDeptService deptService;
 
@@ -29,6 +34,10 @@ public class DeptController {
     @HystrixCommand(fallbackMethod ="getResult") //服务熔断 在服务端定义
     public Dept getById(@PathVariable("id") Integer id){
         Dept dept = deptService.findById(id);
+        log.info("查询到的部门信息为："+dept.toString());
+        log.warn("查询到的部门信息为："+dept.toString());
+        log.error("查询到的部门信息为："+dept.toString());
+
         if(null==dept) throw new RuntimeException("未查询到数据");
         return  dept;
     }
@@ -56,6 +65,7 @@ public class DeptController {
     }
 
     public Dept getResult(@PathVariable("id") Integer id){
+        log.error("未查询到数据。");
         return new Dept(id,"为查询到id为"+id+"的相关信息 null @hystrixComment","unknown database");
     }
 }

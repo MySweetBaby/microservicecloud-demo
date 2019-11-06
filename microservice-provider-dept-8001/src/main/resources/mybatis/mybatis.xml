@@ -17,4 +17,5 @@
             <!--<property name="pageSqlId" value=".*ByPage" />-->
         <!--</plugin>-->
     <!--</plugins>-->
+    <mappers></mappers>
 </configuration>

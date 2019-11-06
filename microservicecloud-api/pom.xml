@@ -58,6 +58,15 @@
             <version>9.6.0</version>
         </dependency>
 
+        <!--引入springboot的日志jar（springboot默认使用slf4j+logback来实现日志记录，
+        同时引入了替换spring（默认的jar包是common.jar）
+        输出日志的jar
+        ）-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+
         <!--&lt;!&ndash;引入config客户端jar&ndash;&gt;-->
         <!--<dependency>-->
             <!--<groupId>org.springframework.cloud</groupId>-->

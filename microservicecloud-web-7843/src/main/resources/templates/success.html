@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>this is a test html!</title>
+</head>
+<body>
+
+<h2>this is a test page !</h2>
+<h1 th:text="${hello}">,welcome to theamleaf!</h1>
+<hr/>
+
+<table>
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>部门名称</th>
+        <th>数据库</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="d : ${dept}">
+        <td th:text="${d.deptno}">[[${d.deptno}]]</td>
+        <td th:text="${d.dname}">[[${d.dname}]]</td>
+        <td th:text="${d.db_source}">默认数据库</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

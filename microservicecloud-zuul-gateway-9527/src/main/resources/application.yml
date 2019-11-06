@@ -10,6 +10,8 @@ eureka:
 spring:
   application:
     name: microservicecloud-zuul-gateway
+#  profiles:
+#    active:  dev 指定激活配置文件 需要在spring.profiles: 写上定义的名称
 #  profiles: zuul-dept
 #  profiles:
 #    active:
